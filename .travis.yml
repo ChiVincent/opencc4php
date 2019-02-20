@@ -5,17 +5,12 @@ compiler:
 
 os:
   - linux
-#  - osx
 
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
   - 7.0
-
-notifications:
-  email: nauxliu@gmail.com
+  - 7.1
+  - 7.2
+  - 7.3
 
 env:
   - REPORT_EXIT_STATUS=1 NO_INTERACTION=1
@@ -26,7 +21,7 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install doxygen -y
+  - sudo apt-get install cmake doxygen -y
   - sudo ./travis/install_opencc.sh
 
 before_script:
