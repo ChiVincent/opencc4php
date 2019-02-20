@@ -1,42 +1,30 @@
-# 招募新的维护者
-
-由于工作中极少用到 C， 已经生疏，且没有多余时间维护此项目。
-
-希望你：
-
-* 熟悉PHP 扩展的编写
-* 有足够的时间与精力维护此项目
-* 能够积极的处理 PR 和 Issue
-
-如有兴趣请邮件联系我 `nauxliu@gmail.com`
-
 # 介绍
 
-[![Build Status](https://travis-ci.org/NauxLiu/opencc4php.svg?branch=master)](https://travis-ci.org/NauxLiu/opencc4php)
+[![Build Status](https://travis-ci.com/ChiVincent/opencc4php.svg?branch=master)](https://travis-ci.org/ChiVincent/opencc4php)
 
-opencc4php 是[OpenCC](https://github.com/BYVoid/OpenCC)的PHP扩展，能很智能的完成简繁体转换。 
+opencc4php 是[OpenCC](https://github.com/BYVoid/OpenCC)的 PHP extension，能夠完成簡體與繁體文字之間的互換。 
 
-支持 PHP 版本： 5.3 - 7.1
+支持 PHP 版本： 7.0 - 7.3
 
-### 转换效果：
+### 轉換效果：
 
 `你干什么不干我事` => `你幹什麼不干我事`
 
-地区词汇转换效果：
+地區辭彙轉換效果：
 `我鼠标哪儿去了` => `我滑鼠哪兒去了`
 
-# 安装
+# 安裝
 
 #### Linux | OS X
 
-你需要先安装`1.0.1` 版本以上的OpenCC，安装OpenCC：
+你需要先安装 `1.0.1` 版本以上的 OpenCC，安装 OpenCC：
 ```
 git clone https://github.com/BYVoid/OpenCC.git --depth 1
 cd OpenCC
 make
 sudo make install
 ```
-安装opencc4php：
+安装 opencc4php：
 ```
 git clone git@github.com:NauxLiu/opencc4php.git --depth 1
 cd opencc4php
@@ -44,7 +32,7 @@ phpize
 ./configure
 make && sudo make install
 ```
->如果你的OpenCC安装目录不在`/usr`或`/usr/local`，可在`./configure`时添加`--with-opencc=[DIR]`指定你的OpenCC目录
+>如果你的 OpenCC 安装目录不在 `/usr` 或 `/usr/local` ，可在 `./configure` 时添加 `--with-opencc=[DIR]` 指定你的 OpenCC 目录
 
 
 #### Windows
@@ -52,9 +40,9 @@ make && sudo make install
 
 # 使用
 
-### 实例：
+### 範例：
 ```php
-$od = opencc_open("s2twp.json"); //传入配置文件名
+$od = opencc_open("s2twp.json"); // 傳入設定檔名
 $text = opencc_convert("我鼠标哪儿去了。", $od);
 echo $text;
 opencc_close($od);
@@ -62,29 +50,32 @@ opencc_close($od);
 输出:
 `我滑鼠哪兒去了`
 
-### 函数列表：
+### 函數列表：
 
-`opencc_open(string ConfigName)`  ConfigName:配置文件名，成功返回资源对象，失败返回false  
-`opencc_close(resource ob)`  关闭资源对象,成功返回true，失败返回false.   
-`opencc_error()` 返回最后一条错误信息，有错误信息返回String,无错误返回false  
-`opencc_convert(string str, resource od)` str：要转换的字符串(UTF-8)，od：opencc资源对象  
+`opencc_open(string ConfigName)`  ConfigName: 設定檔名。成功 return `opencc_od_resource`，失敗 return `false`
+`opencc_close(resource ob)` 關閉 resource。成功 return `true`，失敗 return `false`  
+`opencc_error()` 返回最后一条错误信息，有错误信息返回String,无错误返回false 
+`opencc_convert(string str, resource od)` str: 要轉換的字串（UTF-8）、od: `opencc_od_resource`
 
 
-### 可用配置
-* `s2t.json` 简体到繁体 
-* `t2s.json` 繁体到简体 
-* `s2tw.json` 简体到台湾正体 
-* `tw2s.json` 台湾正体到简体 
-* `s2hk.json` 简体到香港繁体（香港小学学习字词表标准） 
-* `hk2s.json` 香港繁体（香港小学学习字词表标准）到简体 
-* `s2twp.json` 简体到繁体（台湾正体标准）并转换为台湾常用词汇 
-* `tw2sp.json` 繁体（台湾正体标准）到简体并转换为中国大陆常用词汇
+### 可用設定檔
+* `s2t.json` Simplified Chinese to Traditional Chinese 簡體到繁體
+* `t2s.json` Traditional Chinese to Simplified Chinese 繁體到簡體
+* `s2tw.json` Simplified Chinese to Traditional Chinese (Taiwan Standard) 簡體到臺灣正體
+* `tw2s.json` Traditional Chinese (Taiwan Standard) to Simplified Chinese 臺灣正體到簡體
+* `s2hk.json` Simplified Chinese to Traditional Chinese (Hong Kong Standard) 簡體到香港繁體（香港小學學習字詞表標準）
+* `hk2s.json` Traditional Chinese (Hong Kong Standard) to Simplified Chinese 香港繁體（香港小學學習字詞表標準）到簡體
+* `s2twp.json` Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom 簡體到繁體（臺灣正體標準）並轉換爲臺灣常用詞彙
+* `tw2sp.json` Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom 繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙
+* `t2tw.json` Traditional Chinese (OpenCC Standard) to Taiwan Standard 繁體（OpenCC 標準）到臺灣正體
+* `t2hk.json` Traditional Chinese (OpenCC Standard) to Hong Kong Standard 繁體（OpenCC 標準）到香港繁體（香港小學學習字詞表標準）
 
-# 贡献列表
+
+# 貢獻列表
 [@刘相轩](https://github.com/NauxLiu)  
 [@Kyle Tse](https://github.com/shtse8)  
 [@Alliumcepa Triplef](https://github.com/fffonion)  
 [@acgrid](https://github.com/acgrid)  
 [@pkujhd](https://github.com/pkujhd)  
 [@bc](https://github.com/bclow)  
-
+[@chivincent](https://github.com/ChiVincent)
